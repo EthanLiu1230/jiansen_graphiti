@@ -55,3 +55,5 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.7'
 end
+
+gem "jwt", "~> 2.2"
