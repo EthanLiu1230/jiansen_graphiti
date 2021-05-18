@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_104420) do
+ActiveRecord::Schema.define(version: 2021_05_18_122739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blacklisted_tokens", force: :cascade do |t|
+    t.string "token"
+    t.bigint "user_id", null: false
+    t.datetime "expire_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_blacklisted_tokens_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -33,5 +42,6 @@ ActiveRecord::Schema.define(version: 2021_05_17_104420) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "blacklisted_tokens", "users"
   add_foreign_key "categories", "categories", column: "parent_id"
 end
