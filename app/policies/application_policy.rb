@@ -3,11 +3,35 @@ class ApplicationPolicy < ActionPolicy::Base
   # Configure additional authorization contexts here
   # (`user` is added by default).
   #
-  #   authorize :account, optional: true
+  authorize :user, optional: true
   #
   # Read more about authorization context: https://actionpolicy.evilmartians.io/#/authorization_context
 
+  def index?
+    true
+  end
+
+  def show?
+    true
+  end
+
+  def create?
+    admin?
+  end
+
+  def update?
+    admin?
+  end
+
+  def destroy?
+    admin?
+  end
+
   private
+
+  def admin?
+    user.admin? or user.super_admin?
+  end
 
   # Define shared methods useful for most policies.
   # For example:

@@ -4,5 +4,6 @@ FactoryBot.define do
     name { first_name }
     email { "#{first_name}@test.com" }
     password { Faker::Lorem.word }
+    role { 'admin' }
   end
 end
