@@ -39,6 +39,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# https://www.graphiti.dev/guides/
 gem 'graphiti'
 gem 'graphiti-rails'
 gem 'vandal_ui'
@@ -54,7 +56,12 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
+  # https://matchers.shoulda.io/
   gem "shoulda-matchers", "~> 4.5"
 end
 
+# https://github.com/Gokul595/api_guard
 gem "api_guard", "~> 0.5.2"
+
+# https://actionpolicy.evilmartians.io/#/quick_start
+gem "action_policy", "~> 0.5.7"
