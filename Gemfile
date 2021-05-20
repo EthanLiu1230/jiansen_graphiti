@@ -54,7 +54,10 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
+  gem "shoulda-matchers", "~> 4.5"
 end
 
 gem "api_guard", "~> 0.5.2"
+
+gem "pundit", "~> 2.1"
 
