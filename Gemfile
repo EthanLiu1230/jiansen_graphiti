@@ -58,6 +58,3 @@ group :test do
 end
 
 gem "api_guard", "~> 0.5.2"
-
-gem "pundit", "~> 2.1"
-
