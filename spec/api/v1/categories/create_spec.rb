@@ -1,8 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe "categories#create", type: :request do
+  let!(:user) { create(:user, role: :admin) }
+  let(:authorization_header) do
+    access_token = jwt_and_refresh_token(user, 'user')[0]
+    { 'Authorization': "Bearer #{access_token}" }
+  end
+
   subject(:make_request) do
-    jsonapi_post "/api/v1/categories", payload
+    jsonapi_post "/api/v1/categories", payload,
+      headers: authorization_header
   end
 
   describe 'basic create' do

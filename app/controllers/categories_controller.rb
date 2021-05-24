@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 
   def create
     category = CategoryResource.build(params)
-
+    authorize! category, with: CategoryPolicy
     if category.save
       render jsonapi: category, status: 201
     else
