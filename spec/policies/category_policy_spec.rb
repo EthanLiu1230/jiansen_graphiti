@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'shared_examples/authorize_admin'
+require 'shared/examples/authorize_admin'
 
 describe CategoryPolicy do
   let(:user) { build_stubbed(:user, role: nil) }

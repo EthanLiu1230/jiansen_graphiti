@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'shared/context/with_admin_token'
 
 RSpec.describe "categories#update", type: :request do
+  include_context 'with_admin_token'
   subject(:make_request) do
-    jsonapi_put "/api/v1/categories/#{category.id}", payload
+    jsonapi_put "/api/v1/categories/#{category.id}", payload, headers: with_admin_token
   end
 
   describe 'basic update' do
@@ -15,13 +17,14 @@ RSpec.describe "categories#update", type: :request do
           type: 'categories',
           attributes: {
             # ... your attrs here
+            name: 'updated category'
           }
         }
       }
     end
 
     # Replace 'xit' with 'it' after adding attributes
-    xit 'updates the resource' do
+    it 'updates the resource' do
       expect(CategoryResource).to receive(:find).and_call_original
       expect {
         make_request

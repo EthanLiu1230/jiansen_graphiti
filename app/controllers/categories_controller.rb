@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authorize!
+
   def index
     categories = CategoryResource.all(params)
     respond_with(categories)
@@ -11,7 +13,6 @@ class CategoriesController < ApplicationController
 
   def create
     category = CategoryResource.build(params)
-    authorize! category, with: CategoryPolicy
     if category.save
       render jsonapi: category, status: 201
     else
@@ -31,7 +32,6 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = CategoryResource.find(params)
-    authorize!
     if category.destroy
       render jsonapi: { meta: {} }, status: 200
     else
