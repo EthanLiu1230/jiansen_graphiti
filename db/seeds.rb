@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+# ==> categories
 [Category].each(&:delete_all)
 
 office = Category.create!(name: 'office')
@@ -15,3 +15,6 @@ hotel = Category.create!(name: 'hotel')
 office.children.create([{ name: 'chair' }, { name: 'desk' }, { name: 'cabinet' }])
 school.children.create([{ name: 'chair' }, { name: 'desk' }])
 hotel.children.create([{ name: 'bed' }, { name: 'closet' }])
+
+# ==> users
+User.create(email: 'ethan@test.com', password: 'Password1', name: 'ethan', role: 'admin')
