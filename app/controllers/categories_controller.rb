@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = CategoryResource.find(params)
-
+    authorize!
     if category.destroy
       render jsonapi: { meta: {} }, status: 200
     else

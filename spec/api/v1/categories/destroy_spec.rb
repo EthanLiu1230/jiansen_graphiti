@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'shared/context/with_admin_token'
 
 RSpec.describe "categories#destroy", type: :request do
+  include_context 'with_admin_token'
   subject(:make_request) do
-    jsonapi_delete "/api/v1/categories/#{category.id}"
+    jsonapi_delete "/api/v1/categories/#{category.id}", headers: with_admin_token
   end
 
   describe 'basic destroy' do
