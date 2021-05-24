@@ -46,8 +46,7 @@ RSpec.describe "users", type: :request do
   context 'authenticated user' do
 
     let!(:access_token) do
-      access_token, _refresh_token = jwt_and_refresh_token(user, 'user')
-      access_token
+      jwt_and_refresh_token(user, 'user')[0]
     end
 
     let!(:blacklisted_token) do
