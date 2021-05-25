@@ -5,13 +5,14 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+# == Relaunch to apply changes
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # todo: limit access to cors
-    origins '*'
+    origins 'localhost:8080'
 
     resource '*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      expose: ['Access-Token']
   end
 end

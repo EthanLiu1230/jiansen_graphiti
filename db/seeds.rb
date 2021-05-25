@@ -17,4 +17,4 @@ school.children.create([{ name: 'chair' }, { name: 'desk' }])
 hotel.children.create([{ name: 'bed' }, { name: 'closet' }])
 
 # ==> users
-User.create(email: 'ethan@test.com', password: 'Password1', name: 'ethan', role: 'admin')
+User.create(email: 'ethan@test.com', password: 'asas', name: 'ethan', role: 'admin')
