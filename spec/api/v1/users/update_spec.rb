@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'shared/context/with_token'
 
 RSpec.describe "users#update", type: :request do
+  include_context 'with token'
   subject(:make_request) do
-    jsonapi_put "/api/v1/users/#{user.id}", payload
+    jsonapi_put "/api/v1/users/#{user.id}", payload, headers: bear_super_admin_token
   end
 
   describe 'basic update' do
@@ -15,13 +17,14 @@ RSpec.describe "users#update", type: :request do
           type: 'users',
           attributes: {
             # ... your attrs here
+            name: 'new name'
           }
         }
       }
     end
 
     # Replace 'xit' with 'it' after adding attributes
-    xit 'updates the resource' do
+    it 'updates the resource' do
       expect(UserResource).to receive(:find).and_call_original
       expect {
         make_request

@@ -1,8 +1,11 @@
 require 'rails_helper'
+require 'shared/context/with_token'
 
 RSpec.describe "users#destroy", type: :request do
+  include_context 'with token'
+
   subject(:make_request) do
-    jsonapi_delete "/api/v1/users/#{user.id}"
+    jsonapi_delete "/api/v1/users/#{user.id}", headers: bear_super_admin_token
   end
 
   describe 'basic destroy' do

@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    first_name = Faker::Name.first_name
-    name { first_name }
-    email { "#{first_name}@test.com" }
+    name = Faker::Name.name
+    name { name }
+    email { "#{name}@#{Faker::Lorem.word}.com" }
     password { Faker::Lorem.word }
     role { 'admin' }
   end
