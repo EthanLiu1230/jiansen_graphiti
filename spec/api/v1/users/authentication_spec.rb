@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "users", type: :request do
+RSpec.describe "api_guard authentication", type: :request do
 
   let!(:user) do
     create(:user,
       email: 'ethan@test.com',
       password: 'Password1',
-      password_confirmation: 'Password1'
     )
   end
 
@@ -45,18 +44,18 @@ RSpec.describe "users", type: :request do
 
   context 'authenticated user' do
 
-    let!(:access_token) do
+    let(:access_token) do
       jwt_and_refresh_token(user, 'user')[0]
     end
 
-    let!(:blacklisted_token) do
+    let(:blacklisted_token) do
       create(:blacklisted_token, token: 'abc.efg.adw', user: user)
     end
 
-    it 'allows to change password' do
+    it 'allows authenticated user to change password' do
       jsonapi_patch '/api/v1/users/passwords', {
-        "password": "api_password_new",
-        "password_confirmation": "api_password_new"
+        "password": "new",
+        "password_confirmation": "new"
       }, headers: { 'Authorization': "Bearer #{access_token}" }
       expect(response).to have_http_status :ok
       expect(JSON.parse(response.body)).to include("status" => "success")
