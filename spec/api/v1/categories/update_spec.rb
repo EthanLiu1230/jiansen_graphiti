@@ -1,10 +1,10 @@
 require 'rails_helper'
-require 'shared/context/with_admin_token'
+require 'shared/context/with_token'
 
 RSpec.describe "categories#update", type: :request do
-  include_context 'with_admin_token'
+  include_context 'with token'
   subject(:make_request) do
-    jsonapi_put "/api/v1/categories/#{category.id}", payload, headers: with_admin_token
+    jsonapi_put "/api/v1/categories/#{category.id}", payload, headers: bear_admin_token
   end
 
   describe 'basic update' do

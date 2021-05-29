@@ -2,9 +2,9 @@
 class ApplicationPolicy < ActionPolicy::Base
   # Configure additional authorization contexts here
   # (`user` is added by default).
-  #
+
   authorize :user, optional: true
-  #
+
   # Read more about authorization context: https://actionpolicy.evilmartians.io/#/authorization_context
 
   def index?
@@ -20,11 +20,11 @@ class ApplicationPolicy < ActionPolicy::Base
   end
 
   def update?
-    admin?
+    create?
   end
 
   def destroy?
-    admin?
+    create?
   end
 
   private

@@ -129,6 +129,133 @@
           "count"
         ]
       }
+    },
+    {
+      "name": "UserResource",
+      "type": "users",
+      "graphql_entrypoint": "users",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "email": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "password": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "role": {
+          "type": "string_enum",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        },
+        "email": {
+        },
+        "password": {
+        },
+        "role": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "email": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "password": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "role": {
+          "type": "string_enum",
+          "operators": [
+            "eq"
+          ],
+          "allow": [
+            "admin",
+            "super_admin"
+          ]
+        }
+      },
+      "relationships": {
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
     }
   ],
   "endpoints": {
@@ -148,6 +275,25 @@
         },
         "destroy": {
           "resource": "CategoryResource"
+        }
+      }
+    },
+    "/api/v1/users": {
+      "actions": {
+        "index": {
+          "resource": "UserResource"
+        },
+        "show": {
+          "resource": "UserResource"
+        },
+        "create": {
+          "resource": "UserResource"
+        },
+        "update": {
+          "resource": "UserResource"
+        },
+        "destroy": {
+          "resource": "UserResource"
         }
       }
     }
