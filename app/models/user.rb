@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   # Todo: add cron job to prevent blacklisted_token table growing
   # https://github.com/Gokul595/api_guard#token-blacklisting
+
+  has_one_attached :avatar
 end
