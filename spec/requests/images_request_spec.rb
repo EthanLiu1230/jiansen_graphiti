@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "images", type: :request do
+  include ActionDispatch::TestProcess::FixtureFile
+
   let!(:content) { create(:content) }
   let(:images) { [fixture_file_upload('test.png', 'image/png')] }
   describe '#create' do
