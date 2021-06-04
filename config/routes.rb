@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
-    resources :contents
+    resources :contents do
+      resources :images, only: [:create]
+    end
     resources :categories
     mount VandalUi::Engine, at: '/vandal'
     # your routes go here
