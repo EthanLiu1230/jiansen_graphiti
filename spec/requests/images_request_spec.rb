@@ -14,7 +14,7 @@ RSpec.describe "images", type: :request do
     let(:make_request) do
       post "/api/v1/contents/#{content.id}/images", params: { images: images }
     end
-    it "can add multiple images" do
+    it "can append multiple images" do
       expect {
         make_request
         expect(content.images.attached?).to be true
@@ -23,9 +23,19 @@ RSpec.describe "images", type: :request do
     end
   end
 
-  describe '#update' do
-    let(:make_request) do
-      put "/api/v1/contents/#{content.id}/images", params: { images: images }
+  describe '#destroy(:id)' do
+    let(:attached_images) do
+      content.images.attach(images)
+      content.images
+    end
+    let(:image_to_delete) do
+      attached_images.find { |img| img.filename == 'test2.png' }
+    end
+    it "works" do
+      expect(image_to_delete.filename).to eq 'test2.png'
     end
   end
+
+  describe '#destroy'
+
 end
