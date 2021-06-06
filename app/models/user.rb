@@ -5,6 +5,5 @@ class User < ApplicationRecord
   enum role: { super_admin: 'super_admin', admin: 'admin' }, _default: :admin
 
   # Todo: add cron job to prevent blacklisted_token table from growing
-  #
   # https://github.com/Gokul595/api_guard#token-blacklisting
 end

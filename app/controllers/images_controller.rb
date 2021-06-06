@@ -21,4 +21,9 @@ class ImagesController < ApplicationController
     image = ImageResource.find(params)
     respond_with(image)
   end
+
+  def index
+    images = ImageResource.all(params)
+    respond_with(images)
+  end
 end

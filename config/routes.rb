@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       delete 'images', to: "images#destroy_all"
     end
     resources :categories
-    resources :images, only: [:show]
+    resources :images, only: [:index, :show]
     mount VandalUi::Engine, at: '/vandal'
     # your routes go here
     api_guard_routes for: 'users'
