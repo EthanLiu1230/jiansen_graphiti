@@ -16,4 +16,9 @@ class ImagesController < ApplicationController
     content.images.purge
     render status: :ok
   end
+
+  def show
+    image = ImageResource.find(params)
+    respond_with(image)
+  end
 end
