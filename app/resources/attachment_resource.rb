@@ -4,8 +4,6 @@ class AttachmentResource < ApplicationResource
   attribute :record_id, :integer_id, only: [:filterable]
 
   attribute :filename, :string
-  attribute :url, :string do
-    Rails.application.routes.url_helpers.url_for(@object)
-  end
+
   attribute :content_type, :string
 end
