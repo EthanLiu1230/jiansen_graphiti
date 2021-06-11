@@ -4,7 +4,7 @@ class CategoryResource < ApplicationResource
   attribute :name, :string
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
-  attribute :parent_id, :integer, readable: false
+  attribute :parent_id, :integer
 
   belongs_to :parent, foreign_key: :parent_id, resource: CategoryResource
   has_many :children, foreign_key: :parent_id, resource: CategoryResource

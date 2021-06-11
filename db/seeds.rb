@@ -18,4 +18,10 @@ school.children.create([{ name: 'chair' }, { name: 'desk' }])
 hotel.children.create([{ name: 'bed' }, { name: 'closet' }])
 
 # => contents
-Content.create title: 'The First Content'
+hero = Content.create name: 'hero', title: 'hero title'
+hero.images.attach io: File.open('spec/fixtures/files/test1.png'), filename: 'test1.png'
+hero.images.attach io: File.open('spec/fixtures/files/test2.png'), filename: 'test2.png'
+
+# => pages
+homepage = Page.create path: '/'
+homepage.contents << hero
