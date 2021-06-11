@@ -30,7 +30,7 @@ RSpec.describe ContentResource, type: :resource do
         data: {
           id: content.id.to_s,
           type: 'contents',
-          attributes: { } # Todo!
+          attributes: { body: 'new body' }
         }
       }
     end
@@ -39,11 +39,10 @@ RSpec.describe ContentResource, type: :resource do
       ContentResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
+    it 'works (add some attributes and enable this spec)' do
       expect {
         expect(instance.update_attributes).to eq(true)
-      }.to change { content.reload.updated_at }
-      # .and change { content.foo }.to('bar') <- example
+      }.to change { content.reload.updated_at }.and change { content.body }.to('new body')
     end
   end
 
