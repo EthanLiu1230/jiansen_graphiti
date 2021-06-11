@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_091115) do
+ActiveRecord::Schema.define(version: 2021_06_11_051355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,19 @@ ActiveRecord::Schema.define(version: 2021_05_31_091115) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "subtitle"
+    t.text "body"
+    t.bigint "page_id"
+    t.string "name"
+    t.index ["name", "page_id"], name: "index_contents_on_name_and_page_id", unique: true
+    t.index ["page_id"], name: "index_contents_on_page_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "path"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["path"], name: "index_pages_on_path", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,4 +94,5 @@ ActiveRecord::Schema.define(version: 2021_05_31_091115) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blacklisted_tokens", "users"
   add_foreign_key "categories", "categories", column: "parent_id"
+  add_foreign_key "contents", "pages"
 end

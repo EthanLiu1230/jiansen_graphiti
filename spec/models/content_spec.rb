@@ -1,41 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Content, type: :model do
-  let(:images) do
-    [
-      fixture_file_upload('test1.png', 'image/png'),
-      fixture_file_upload('test2.png', 'image/png')
-    ]
-  end
-  describe '#images' do
-    subject do
-      content = create(:content)
-      content.images.attach(images)
-      content
-    end
 
-    it 'has access to image id' do
-      expect(subject.images[0]).to respond_to(:id)
-    end
+  it { should have_many_attached(:images) }
 
-    it 'can find single image by id' do
-      target = subject.images[0]
-      expect(subject.images.find(target.id)).to eq(target)
-    end
+  it { should validate_presence_of(:name) }
+  it { should have_db_index([:name, :page_id]).unique }
+  it { should validate_uniqueness_of(:name).scoped_to(:page_id) }
 
-    it 'can delete single image by id' do
-      target_id = subject.images[0].id
-      expect {
-        subject.images.find(target_id).purge
-      }.to change { subject.images.count }.by(-1)
-      expect(subject.images.attached?).to be true
-    end
+  it { should belong_to(:page).optional }
 
-    it 'can delete all images' do
-      expect {
-        subject.images.purge
-      }.to change {subject.images.count}.by(-2)
-      expect(subject.images.attached?).to be false
-    end
-  end
+  it { should have_db_column(:title) }
+  it { should have_db_column(:body) }
+  it { should have_db_column(:subtitle) }
 end
