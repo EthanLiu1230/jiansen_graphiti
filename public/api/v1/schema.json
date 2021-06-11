@@ -1,6 +1,126 @@
 {
   "resources": [
     {
+      "name": "AttachmentResource",
+      "type": "attachments",
+      "graphql_entrypoint": "attachments",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "record_type": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "filename": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "content_type": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "record_type": {
+        },
+        "filename": {
+        },
+        "content_type": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "record_type": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "record_id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "filename": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "content_type": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
+    },
+    {
       "name": "CategoryResource",
       "type": "categories",
       "graphql_entrypoint": "categories",
@@ -129,6 +249,370 @@
           "count"
         ]
       }
+    },
+    {
+      "name": "ContentResource",
+      "type": "contents",
+      "graphql_entrypoint": "contents",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "name": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "title": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "subtitle": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "body": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "name": {
+        },
+        "title": {
+        },
+        "subtitle": {
+        },
+        "body": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "subtitle": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "page_id": {
+          "type": "integer",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        }
+      },
+      "relationships": {
+        "images": {
+          "type": "has_many",
+          "description": null,
+          "resource": "ImageResource"
+        },
+        "page": {
+          "type": "belongs_to",
+          "description": null,
+          "resource": "PageResource"
+        }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "ImageResource",
+      "type": "attachments",
+      "graphql_entrypoint": "attachments",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "record_type": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "filename": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "content_type": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "url": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "record_type": {
+        },
+        "filename": {
+        },
+        "content_type": {
+        },
+        "url": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "record_type": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "record_id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "filename": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "content_type": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "PageResource",
+      "type": "pages",
+      "graphql_entrypoint": "pages",
+      "description": null,
+      "attributes": {
+        "id": {
+          "type": "integer_id",
+          "readable": true,
+          "writable": true,
+          "description": null
+        },
+        "path": {
+          "type": "string",
+          "readable": true,
+          "writable": true,
+          "description": null
+        }
+      },
+      "extra_attributes": {
+      },
+      "sorts": {
+        "id": {
+        },
+        "path": {
+        }
+      },
+      "filters": {
+        "id": {
+          "type": "integer_id",
+          "operators": [
+            "eq",
+            "not_eq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "operators": [
+            "eq",
+            "not_eq",
+            "eql",
+            "not_eql",
+            "prefix",
+            "not_prefix",
+            "suffix",
+            "not_suffix",
+            "match",
+            "not_match"
+          ]
+        }
+      },
+      "relationships": {
+        "contents": {
+          "type": "has_many",
+          "description": null,
+          "resource": "ContentResource"
+        }
+      },
+      "stats": {
+        "total": [
+          "count"
+        ]
+      }
     }
   ],
   "endpoints": {
@@ -148,6 +632,54 @@
         },
         "destroy": {
           "resource": "CategoryResource"
+        }
+      }
+    },
+    "/api/v1/contents": {
+      "actions": {
+        "index": {
+          "resource": "ContentResource"
+        },
+        "show": {
+          "resource": "ContentResource"
+        },
+        "create": {
+          "resource": "ContentResource"
+        },
+        "update": {
+          "resource": "ContentResource"
+        },
+        "destroy": {
+          "resource": "ContentResource"
+        }
+      }
+    },
+    "/api/v1/images": {
+      "actions": {
+        "index": {
+          "resource": "ImageResource"
+        },
+        "show": {
+          "resource": "ImageResource"
+        }
+      }
+    },
+    "/api/v1/pages": {
+      "actions": {
+        "index": {
+          "resource": "PageResource"
+        },
+        "show": {
+          "resource": "PageResource"
+        },
+        "create": {
+          "resource": "PageResource"
+        },
+        "update": {
+          "resource": "PageResource"
+        },
+        "destroy": {
+          "resource": "PageResource"
         }
       }
     }

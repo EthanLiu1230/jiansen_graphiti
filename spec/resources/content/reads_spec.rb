@@ -73,7 +73,7 @@ RSpec.describe ContentResource, type: :resource do
       content
     end
     describe 'images' do
-      before(:example) do
+      before do
         params[:include] = 'images'
       end
       it 'returns images as attachments' do

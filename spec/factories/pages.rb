@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :page do
-    path { "MyString" }
+    path { Faker::File.dir }
   end
 end

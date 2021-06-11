@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
+    resources :pages
     resources :contents do
       resources :images, only: [:create, :destroy]
       delete 'images', to: "images#destroy_all"
